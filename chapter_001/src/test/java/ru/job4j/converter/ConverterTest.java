@@ -9,27 +9,27 @@ public class ConverterTest {
     public void RubleToDollarTest() {
         Converter converter = new Converter();
         double result = converter.rubleToDollar(1);
-        assertThat(result, is(62.67));
+        assertThat(result, is(0.016));
     }
 
     @Test
     public void RubleToEuroTest() {
         Converter converter = new Converter();
         double result = converter.rubleToEuro(1);
-        assertThat(result, is(73.6433));
+        assertThat(result, is(0.0138));
     }
 
     @Test
     public void EuroToRubleTest() {
         Converter converter = new Converter();
         double result = converter.EuroToRuble(1);
-        assertThat(result, is(0.0136));
+        assertThat(result, is(72.5526));
     }
 
     @Test
     public void DollarToRubleTest() {
         Converter converter = new Converter();
         double result = converter.DollarToRuble(1);
-        assertThat(result, is(0.016));
+        assertThat(result, is(62.5346));
     }
 }
