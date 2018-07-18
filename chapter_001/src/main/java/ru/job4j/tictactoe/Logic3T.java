@@ -11,35 +11,36 @@ public class Logic3T {
 
     public boolean isWinnerX() {
         return
-                //горизонтали
-                this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 0) ||
-                this.fillBy(Figure3T::hasMarkX, 1, 0, 1, 0) ||
-                this.fillBy(Figure3T::hasMarkX, this.table.length - 1, 0, 1, 0) ||
-
                 //вертикали
                 this.fillBy(Figure3T::hasMarkX, 0, 0, 0, 1) ||
-                this.fillBy(Figure3T::hasMarkX, 0, 1, 0, 1) ||
-                this.fillBy(Figure3T::hasMarkX, 0, this.table.length - 1, 0, 1) ||
+                        this.fillBy(Figure3T::hasMarkX, 1, 0, 0, 1) ||
+                        this.fillBy(Figure3T::hasMarkX, this.table.length - 1, 0, 0, 1) ||
 
-                //диагонали
-                this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 1) ||
-                this.fillBy(Figure3T::hasMarkX, this.table.length - 1, 0, -1, 1);
-    }
-    public boolean isWinnerO() {
-        return
-                //горизонтали
-                this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 0) ||
-                this.fillBy(Figure3T::hasMarkO, 1, 0, 1, 0) ||
-                this.fillBy(Figure3T::hasMarkO, this.table.length - 1, 0, 1, 0) ||
-
-                //вертикали
-                this.fillBy(Figure3T::hasMarkO, 0, 0, 0, 1) ||
-                this.fillBy(Figure3T::hasMarkO, 0, 1, 0, 1) ||
-                this.fillBy(Figure3T::hasMarkO, 0, this.table.length - 1, 0, 1) ||
+                        //горизонтали
+                        this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 0) ||
+                        this.fillBy(Figure3T::hasMarkX, 0, 1, 1, 0) ||
+                        this.fillBy(Figure3T::hasMarkX, 0, this.table.length - 1, 1, 0) ||
 
                         //диагонали
-                this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 1) ||
-                this.fillBy(Figure3T::hasMarkO, this.table.length - 1, 0, -1, 1);
+                        this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 1) ||
+                        this.fillBy(Figure3T::hasMarkX, this.table.length - 1, 0, -1, 1);
+    }
+
+    public boolean isWinnerO() {
+        return
+                //вертикали
+                this.fillBy(Figure3T::hasMarkO, 0, 0, 0, 1) ||
+                        this.fillBy(Figure3T::hasMarkO, 1, 0, 0, 1) ||
+                        this.fillBy(Figure3T::hasMarkO, this.table.length - 1, 0, 0, 1) ||
+
+                        //горизонтали
+                        this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 0) ||
+                        this.fillBy(Figure3T::hasMarkO, 0, 1, 1, 0) ||
+                        this.fillBy(Figure3T::hasMarkO, 0, this.table.length - 1, 1, 0) ||
+
+                        //диагонали
+                        this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 1) ||
+                        this.fillBy(Figure3T::hasMarkO, this.table.length - 1, 0, -1, 1);
     }
 
     public boolean hasGap() {

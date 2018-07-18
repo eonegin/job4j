@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
 public class Logic3TTest {
 
     @Test
-    public void whenHasXWinner() {
+    public void whenHasXDiagWinner() {
         Figure3T[][] table = {
                 {new Figure3T(true), new Figure3T(), new Figure3T()},
                 {new Figure3T(), new Figure3T(true), new Figure3T()},
@@ -50,4 +50,7 @@ public class Logic3TTest {
         assertThat(login.isWinnerX(), is(true));
     }
 
+
+
 }
+
