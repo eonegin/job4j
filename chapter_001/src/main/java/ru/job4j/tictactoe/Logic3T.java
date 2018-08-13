@@ -44,7 +44,14 @@ public class Logic3T {
     }
 
     public boolean hasGap() {
-        return true;
+        boolean result = true;
+        for (int i = 0; i < table.length - 1; i++) {
+            if (table[i][i] != table[i][i+1])
+                result = false;
+            break;
+        }
+        return result;
+
     }
 
     public boolean fillBy(Predicate<Figure3T> predicate, int startX, int startY, int deltaX, int deltaY) {

@@ -4,6 +4,12 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class ArrayDuplicate {
+    /**
+     * Удаляет дубли из массива.
+     *
+     * @param array входящий массив.
+     * @return возвращает копию массива без дублей.
+     */
     public static String[] remove(String[] array) {
         int dubl = array.length;
         for (int i = 0; i < dubl; i++) {
