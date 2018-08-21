@@ -1,7 +1,7 @@
 package ru.job4j.DummyBot;
 
 /**
- * DummyBo.
+ * DummyBoе.
  *
  * @author eonegin (3he@mail.ru)
  * @version 1

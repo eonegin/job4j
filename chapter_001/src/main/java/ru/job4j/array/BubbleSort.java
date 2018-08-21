@@ -1,9 +1,22 @@
 package ru.job4j.array;
 
+/**
+ * BubbleSort.
+ * Сортировка массива методом перестановки.
+ * @author eonegin (3he@mail.ru)
+ * @version 1
+ * @since 06.06.2018
+ */
+
 public class BubbleSort {
 
-    public BubbleSort() {
-    }
+    /**
+     * Сортирует входящий массив по возрастанию.
+     *
+     * @param array входящий массив.
+     * @return возвращает копию массива сортированного по возрастанию.
+     */
+
     public int[] sort(int[] array) {
         for (int i = array.length - 1; i > 0; i--) {
             for (int j = 0; j < i; j++) {
