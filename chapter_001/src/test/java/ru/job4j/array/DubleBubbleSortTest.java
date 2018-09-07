@@ -5,7 +5,20 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
+/**
+ * DubleBubbleSortTest.
+ * Тестирует метод doubleSort класса DoubleBubbleSort.
+ * @author eonegin (3he@mail.ru)
+ * @version 1
+ * @since 06.06.2018
+ */
+
 public class DubleBubbleSortTest {
+
+    /**
+     * whenStartWithPrefixThenTrue.
+     * Позитивный тест слияния и сортировки двух массивов ращличной длинны
+     */
     @Test
     public void whenSortArrayWithTenElementsThenSortedArray() {
         DoubleBubbleSort doubleBubbleSort = new DoubleBubbleSort();

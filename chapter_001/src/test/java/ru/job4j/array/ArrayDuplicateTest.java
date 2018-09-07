@@ -8,7 +8,20 @@ import java.util.Arrays;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
+/**
+ * ArrayDuplicateTest.
+ * Тестирует метод remove класса ArrayDuplicate.
+ * @author eonegin (3he@mail.ru)
+ * @version 1
+ * @since 06.06.2018
+ */
+
 public class ArrayDuplicateTest {
+
+    /**
+     * whenRemoveDuplicatesThenArrayWithoutDuplicate.
+     * Позитивный тест
+     */
     @Test
     public void whenRemoveDuplicatesThenArrayWithoutDuplicate() {
         ArrayDuplicate duplicate = new ArrayDuplicate();

@@ -5,7 +5,21 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
+
+/**
+ * BubbleSortTest.
+ * Тестирует метод sort класса BubbleSort.
+ * @author eonegin (3he@mail.ru)
+ * @version 1
+ * @since 06.06.2018
+ */
+
 public class BubbleSortTest {
+
+    /**
+     * whenSortArrayWithTenElementsThenSortedArray.
+     * Позитивный тест 10 значений с дублями
+     */
     @Test
     public void whenSortArrayWithTenElementsThenSortedArray() {
         BubbleSort bubbleSort = new BubbleSort();

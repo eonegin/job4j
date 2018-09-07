@@ -5,7 +5,21 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
+/**
+ * MatrixTest.
+ * Тестирует метод multiple класса Matrix.
+ * @author eonegin (3he@mail.ru)
+ * @version 1
+ * @since 06.06.2018
+ */
+
 public class MatrixTest {
+
+    /**
+     * when2on2.
+     * Позитивный тест. Матрица таблицы умножения 3х3
+     */
+
     @Test
     public void when2on2() {
         Matrix matrix = new Matrix();
