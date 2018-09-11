@@ -13,7 +13,7 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item = new Item("test1", "testDescription", 123L);
         tracker.add(item);
-        assertThat(tracker.getAll()[0], is(item));
+        assertThat(tracker.findAll()[0], is(item));
     }
 
     @Test
@@ -45,8 +45,8 @@ public class TrackerTest {
         // Добавляем третью заявку в трекер. Теперь в объект проинициализирован id.
         tracker.add(third);
 
-        tracker.delete(first.getId());
-        assertThat(tracker.findById(first.getId()).getName(), is(second.getName()));
+        tracker.delete(second.getId());
+        assertThat(tracker.findById(first.getId()).getName(), is(first.getName()));
         assertThat(tracker.findById(second.getId()).getName(), is(third.getName()));
     }
     /*@Test

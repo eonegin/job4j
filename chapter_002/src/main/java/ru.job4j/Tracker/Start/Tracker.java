@@ -64,21 +64,14 @@ public class Tracker {
      * @param id
      */
     public void delete(String id) {
-        //Содержит name заданной строки
-        String deleteElId = findById(id).getName();
-        //Перебираем значения items
-        for (int i = 0; i < items.length - 1; i++)
-            //Ищем совпадение элемента массива с заданной строкой
-            if (items[i].name.equals(deleteElId)) {
-                //Смещаем элементы влево
-                System.arraycopy(items, i, items, 0, 2);
+        for (int i = 0; i < items.length - 1; i++){
+            System.arraycopy(items, i + 1, items, i, items.length - 1 - i);
             }
-
 
     }
 
 
-    public Item[] getAll() {
+    public Item[] findAll() {
         Item[] result = new Item[position];
         for (int index = 0; index != this.position; index++) {
             result[index] = this.items[index];
