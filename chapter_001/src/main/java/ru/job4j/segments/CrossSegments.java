@@ -10,7 +10,6 @@ package ru.job4j.segments;
  */
 
 public class CrossSegments {
-
     /**
      * contains result true or false
      */

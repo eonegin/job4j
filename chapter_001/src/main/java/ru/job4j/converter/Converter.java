@@ -31,7 +31,7 @@ public class Converter {
      * @param value Доллары.
      * @return Рубли.
      */
-    public double DollarToRuble(double value) {
+    public double dollarToRuble(double value) {
         return value * 62.5346;
     }
 
@@ -41,7 +41,7 @@ public class Converter {
      * @param value Доллары.
      * @return Рубли.
      */
-    public double EuroToRuble(double value) {
+    public double euroToRuble(double value) {
         return value * 72.5526;
     }
 

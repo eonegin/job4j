@@ -1,10 +1,9 @@
-package ru.job4j.maxTest;
+package ru.job4j.maxtest;
 
 import org.junit.Test;
 import ru.job4j.max.Max;
 
 import static org.hamcrest.core.Is.is;
-import static org.hamcrest.number.IsCloseTo.closeTo;
 import static org.junit.Assert.assertThat;
 
 public class MaxTest {

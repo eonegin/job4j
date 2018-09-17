@@ -3,6 +3,7 @@ package ru.job4j.Tracker.Start;
 
 import ru.job4j.Tracker.Models.*;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -54,8 +55,13 @@ public class Tracker {
      * @param item
      */
     public void replace(String id, Item item) {
-        findById(id).setName(item.getName());
-
+        for (int i = 0; i < position; i++) {
+            if (items[i] != null && items[i].getId().equals(id)) {
+                item.setId(id);
+                items[i] = item;
+                break;
+            }
+        }
     }
 
     /**
@@ -64,25 +70,33 @@ public class Tracker {
      * @param id
      */
     public void delete(String id) {
-        for (int i = 0; i < items.length - 1; i++){
-            System.arraycopy(items, i + 1, items, i, items.length - 1 - i);
+        for (Item item : items) {
+            if (item.getId().equals(id)) {
+                items[position] = items[position + 1];
+
+
             }
+        }
 
     }
 
 
     public Item[] findAll() {
-        Item[] result = new Item[position];
-        for (int index = 0; index != this.position; index++) {
-            result[index] = this.items[index];
+        return Arrays.copyOf(this.items, position);
+
+    }
+
+    public Item findByName(String name) {
+        Item result = null;
+        for (Item item : items) {
+            if (item != null && item.getName().equals(name)) {
+                result = item;
+                break;
+            }
         }
         return result;
 
     }
-
-    /*public Item[] findByName(String key) {
-
-    }*/
 
 
     public Item findById(String id) {
@@ -96,7 +110,7 @@ public class Tracker {
         return result;
     }
 
-    String generateId() {
+    private String generateId() {
         return String.valueOf(System.currentTimeMillis() + RN.nextInt());
     }
 }

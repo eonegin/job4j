@@ -17,7 +17,7 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenReplaceNameThenReturnNewName() {
+    public void whenReplaceItem() {
 
         Tracker tracker = new Tracker();
         Item previous = new Item("test1", "testDescription", 123L);
@@ -31,6 +31,9 @@ public class TrackerTest {
         tracker.replace(previous.getId(), next);
         // Проверяем, что заявка с таким id имеет новые имя test2.
         assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
+        assertThat(tracker.findById(previous.getId()).getDescription(), is("testDescription2"));
+        assertThat(tracker.findById(previous.getId()).getCreate(), is(1234L));
+
     }
     @Test
     public void whenDeleteItem(){
@@ -47,7 +50,11 @@ public class TrackerTest {
 
         tracker.delete(second.getId());
         assertThat(tracker.findById(first.getId()).getName(), is(first.getName()));
+        assertThat(tracker.findById(first.getId()).getDescription(), is(first.getDescription()));
+        assertThat(tracker.findById(first.getId()).getCreate(), is(first.getCreate()));
         assertThat(tracker.findById(second.getId()).getName(), is(third.getName()));
+        assertThat(tracker.findById(second.getId()).getDescription(), is(third.getDescription()));
+        assertThat(tracker.findById(second.getId()).getCreate(), is(third.getCreate()));
     }
     /*@Test
     public void whenReturnArrayWithoutNull(){

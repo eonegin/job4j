@@ -12,42 +12,57 @@ public class Logic3T {
     public boolean isWinnerX() {
         return
                 //вертикали
-                this.fillBy(Figure3T::hasMarkX, 0, 0, 0, 1) ||
-                        this.fillBy(Figure3T::hasMarkX, 1, 0, 0, 1) ||
-                        this.fillBy(Figure3T::hasMarkX, this.table.length - 1, 0, 0, 1) ||
+                this.fillBy(Figure3T::hasMarkX, 0, 0, 0, 1)
+                        ||
+                        this.fillBy(Figure3T::hasMarkX, 1, 0, 0, 1)
+                        ||
+                        this.fillBy(Figure3T::hasMarkX, this.table.length - 1, 0, 0, 1)
+                        ||
 
                         //горизонтали
-                        this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 0) ||
-                        this.fillBy(Figure3T::hasMarkX, 0, 1, 1, 0) ||
-                        this.fillBy(Figure3T::hasMarkX, 0, this.table.length - 1, 1, 0) ||
+                        this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 0)
+                        ||
+                        this.fillBy(Figure3T::hasMarkX, 0, 1, 1, 0)
+                        ||
+                        this.fillBy(Figure3T::hasMarkX, 0, this.table.length - 1, 1, 0)
+                        ||
 
                         //диагонали
-                        this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 1) ||
+                        this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 1)
+                        ||
                         this.fillBy(Figure3T::hasMarkX, this.table.length - 1, 0, -1, 1);
     }
 
     public boolean isWinnerO() {
         return
                 //вертикали
-                this.fillBy(Figure3T::hasMarkO, 0, 0, 0, 1) ||
-                        this.fillBy(Figure3T::hasMarkO, 1, 0, 0, 1) ||
-                        this.fillBy(Figure3T::hasMarkO, this.table.length - 1, 0, 0, 1) ||
+                this.fillBy(Figure3T::hasMarkO, 0, 0, 0, 1)
+                        ||
+                        this.fillBy(Figure3T::hasMarkO, 1, 0, 0, 1)
+                        ||
+                        this.fillBy(Figure3T::hasMarkO, this.table.length - 1, 0, 0, 1)
+                        ||
 
                         //горизонтали
-                        this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 0) ||
-                        this.fillBy(Figure3T::hasMarkO, 0, 1, 1, 0) ||
-                        this.fillBy(Figure3T::hasMarkO, 0, this.table.length - 1, 1, 0) ||
+                        this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 0)
+                        ||
+                        this.fillBy(Figure3T::hasMarkO, 0, 1, 1, 0)
+                        ||
+                        this.fillBy(Figure3T::hasMarkO, 0, this.table.length - 1, 1, 0)
+                        ||
 
                         //диагонали
-                        this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 1) ||
+                        this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 1)
+                        ||
                         this.fillBy(Figure3T::hasMarkO, this.table.length - 1, 0, -1, 1);
     }
 
     public boolean hasGap() {
         boolean result = true;
         for (int i = 0; i < table.length - 1; i++) {
-            if (table[i][i] != table[i][i+1])
+            if (table[i][i] != table[i][i + 1]) {
                 result = false;
+            }
             break;
         }
         return result;
