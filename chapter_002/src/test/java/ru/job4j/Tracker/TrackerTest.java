@@ -1,5 +1,7 @@
 package ru.job4j.Tracker;
 
+
+import org.hamcrest.Matcher;
 import org.junit.jupiter.api.Test;
 import ru.job4j.Tracker.Models.Item;
 import ru.job4j.Tracker.Start.Tracker;
@@ -35,8 +37,9 @@ public class TrackerTest {
         assertThat(tracker.findById(previous.getId()).getCreate(), is(1234L));
 
     }
+
     @Test
-    public void whenDeleteItem(){
+    public void whenDeleteItem() {
         Tracker tracker = new Tracker();
         Item first = new Item("test1", "testDescription1", 123L);
         // Добавляем первую заявку в трекер. Теперь в объект проинициализирован id.
@@ -48,36 +51,36 @@ public class TrackerTest {
         // Добавляем третью заявку в трекер. Теперь в объект проинициализирован id.
         tracker.add(third);
 
+
         tracker.delete(second.getId());
         assertThat(tracker.findById(first.getId()).getName(), is(first.getName()));
         assertThat(tracker.findById(first.getId()).getDescription(), is(first.getDescription()));
         assertThat(tracker.findById(first.getId()).getCreate(), is(first.getCreate()));
-        assertThat(tracker.findById(second.getId()).getName(), is(third.getName()));
-        assertThat(tracker.findById(second.getId()).getDescription(), is(third.getDescription()));
-        assertThat(tracker.findById(second.getId()).getCreate(), is(third.getCreate()));
+        assertThat(tracker.findById(third.getId()).getName(), is("test3"));
+        assertThat(tracker.findById(third.getId()).getDescription(), is("testDescription3"));
+        assertThat(tracker.findById(third.getId()).getCreate(), is(12345L));
+        assertThat((tracker.findAll()).length, is(2));
+
     }
+
     /*@Test
-    public void whenReturnArrayWithoutNull(){
+    public void whenReturnArrayWithoutNull() {
         Tracker tracker = new Tracker();
 
         Item first = new Item("test1", "testDescription1", 123L);
         // Добавляем первую заявку в трекер. Теперь в объект проинициализирован id.
         tracker.add(first);
 
-        Item second = new Item(null, "testDescription2", 1234L);
+        Item second = new Item();
         // Добавляем вторую заявку в трекер c name = null. Теперь в объект проинициализирован id.
-        tracker.add(second);
+        //tracker.add(second);
 
-        Item third = new Item("test3", null, 12345L);
+        Item third = new Item("test3", "testDescription3", 12345L);
         // Добавляем третью заявку в трекер c description = null. Теперь в объект проинициализирован id.
         tracker.add(third);
 
-        Item fourth = new Item("test3", null, 12345L);
-        // Добавляем третью заявку в трекер c description = null. Теперь в объект проинициализирован id.
-        tracker.add(fourth);
-
-        tracker.getAll(first);
-        assertThat(tracker.getAll(first), is("test2"));
-        assertThat(tracker.findById(second.getId()).getName(), is("test3"));*/
+        tracker.findAll();
+        assertThat(tracker.findAll().length, is(3));
+        assertThat(tracker.findById(first.getId()).getName(), is("test1"));    */
     }
 
