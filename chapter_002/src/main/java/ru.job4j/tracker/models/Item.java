@@ -1,4 +1,4 @@
-package ru.job4j.Tracker.Models;
+package ru.job4j.tracker.models;
 
 /**
  * ArrayChar.

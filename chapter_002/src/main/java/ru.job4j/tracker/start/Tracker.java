@@ -1,13 +1,13 @@
-package ru.job4j.Tracker.Start;
+package ru.job4j.tracker.start;
 
 
-import ru.job4j.Tracker.Models.*;
+import ru.job4j.tracker.models.*;
 
 import java.util.Arrays;
 import java.util.Random;
 
 /**
- * Tracker.
+ * tracker.
  * Хранилище заявок.
  *
  * @author eonegin (3he@mail.ru)
@@ -69,20 +69,25 @@ public class Tracker {
      *
      * @param id
      */
-    public void delete(String id) {
-        for (Item item : items) {
-            if (item.getId().equals(id)) {
-                items[position] = items[position + 1];
-
-
+    public boolean delete(String id) {
+        boolean result = false;
+        for (int i = 0; i < position; i++) {
+            if (items[i].getId().equals(id)) {
+                int numElts = items.length - (i + 1);
+                System.arraycopy(items, i + 1, items, i, numElts);
+                position--;
+                result = true;
+                break;
             }
         }
-
+        return result;
     }
 
 
+
+
     public Item[] findAll() {
-        return Arrays.copyOf(this.items, position);
+            return Arrays.copyOf(this.items, position);
 
     }
 

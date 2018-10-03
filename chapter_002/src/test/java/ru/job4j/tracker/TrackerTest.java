@@ -1,10 +1,9 @@
-package ru.job4j.Tracker;
+package ru.job4j.tracker;
 
 
-import org.hamcrest.Matcher;
 import org.junit.jupiter.api.Test;
-import ru.job4j.Tracker.Models.Item;
-import ru.job4j.Tracker.Start.Tracker;
+import ru.job4j.tracker.models.Item;
+import ru.job4j.tracker.start.Tracker;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -65,7 +64,7 @@ public class TrackerTest {
 
     /*@Test
     public void whenReturnArrayWithoutNull() {
-        Tracker tracker = new Tracker();
+        tracker tracker = new tracker();
 
         Item first = new Item("test1", "testDescription1", 123L);
         // Добавляем первую заявку в трекер. Теперь в объект проинициализирован id.
