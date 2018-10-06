@@ -54,7 +54,7 @@ public class Tracker {
      *
      * @param item
      */
-    public void replace(String id, Item item) {
+    public Item replace(String id, Item item) {
         for (int i = 0; i < position; i++) {
             if (items[i] != null && items[i].getId().equals(id)) {
                 item.setId(id);
@@ -62,6 +62,7 @@ public class Tracker {
                 break;
             }
         }
+        return item;
     }
 
     /**
