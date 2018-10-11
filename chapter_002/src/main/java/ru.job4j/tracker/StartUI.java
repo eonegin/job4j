@@ -100,20 +100,20 @@ public class StartUI {
 
     private void showAllItem() {
         System.out.println("------------ Просмотр всех заявок --------------");
-        System.lineSeparator();
         Item[] result = tracker.findAll();
         System.out.println(Arrays.toString(result));
-        System.lineSeparator();
     }
 
     private void editItem() {
         System.out.println("------------ Редактирование заявки --------------");
-        System.lineSeparator();
         String itemId = this.input.ask("Введите id заявки :");
         String newName = this.input.ask("Введите новое имя заявки :");
-        Item result = tracker.replace(itemId, tracker.findById(itemId));
-        System.out.println(result);
-        System.lineSeparator();
+        boolean result = tracker.replace(itemId, tracker.findById(itemId));
+        if (result == true) {
+            System.out.println("Имя заявки с Id: " + itemId + " заменено на: " + newName);
+        }
+
+
     }
 
     private void deleteItem() {
@@ -121,10 +121,9 @@ public class StartUI {
         System.lineSeparator();
         String itemId = this.input.ask("Введите id заявки :");
         boolean result = tracker.delete(itemId);
-        if(result == true){
+        if (result == true) {
             System.out.println("Заявка с id = " + itemId + " удалена");
-        }
-        else{
+        } else {
             System.out.println("Заявка с id = " + itemId + "не удалена");
         }
         System.lineSeparator();
@@ -134,19 +133,28 @@ public class StartUI {
         System.out.println("------------ Поиск заявки по Id --------------");
         String id = this.input.ask("Введите Id заявки: ");
         Item item = this.tracker.findById(id);
-        System.out.println("Имя: " + item.getName());
-        System.out.println("Описание: " + item.getDescription());
-        System.out.println("Время создания: " + item.getCreate());
-        System.lineSeparator();
+        if (item == null) {
+            System.out.println("Заявки не существует");
+        } else {
+            System.out.println("Имя: " + item.getName());
+            System.out.println("Описание: " + item.getDescription());
+            System.out.println("Время создания: " + item.getCreate());
+        }
+
     }
+
     private void findItemByName() {
         System.out.println("------------ Поиск заявки по имени --------------");
         String name = this.input.ask("Введите имя заявки: ");
-        Item item = this.tracker.findByName(name);
-        System.out.println("Id: " + item.getId());
-        System.out.println("Описание: " + item.getDescription());
-        System.out.println("Время создания: " + item.getCreate());
-        System.lineSeparator();
+        Item item[] = this.tracker.findByName(name);
+        for (Item i : item) {
+            if (i.getName().equals(name)) {
+                System.out.println("Id: " + i.getId());
+                System.out.println("Описание: " + i.getDescription());
+                System.out.println("Время создания: " + i.getCreate());
+                System.lineSeparator();
+            }
+        }
     }
 }
 

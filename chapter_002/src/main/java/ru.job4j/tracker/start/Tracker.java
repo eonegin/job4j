@@ -54,15 +54,17 @@ public class Tracker {
      *
      * @param item
      */
-    public Item replace(String id, Item item) {
+    public boolean replace(String id, Item item) {
+        boolean result = false;
         for (int i = 0; i < position; i++) {
             if (items[i] != null && items[i].getId().equals(id)) {
                 item.setId(id);
                 items[i] = item;
+                result = true;
                 break;
             }
         }
-        return item;
+        return result;
     }
 
     /**
@@ -85,24 +87,26 @@ public class Tracker {
     }
 
 
-
-
     public Item[] findAll() {
-            return Arrays.copyOf(this.items, position);
+        return Arrays.copyOf(this.items, position);
 
     }
 
-    public Item findByName(String name) {
-        Item result = null;
+    public Item[] findByName(String name) {
+        Item result[] = new Item[items.length];
+        int i = 0;
         for (Item item : items) {
-            if (item != null && item.getName().equals(name)) {
-                result = item;
-                break;
+            if (item != null) {
+                result[i] = item;
+                i++;
+
             }
         }
         return result;
 
     }
+
+
 
 
     public Item findById(String id) {
