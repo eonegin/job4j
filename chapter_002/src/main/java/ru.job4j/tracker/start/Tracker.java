@@ -93,20 +93,17 @@ public class Tracker {
     }
 
     public Item[] findByName(String name) {
-        Item result[] = new Item[items.length];
-        int i = 0;
-        for (Item item : items) {
-            if (item != null) {
-                result[i] = item;
-                i++;
-
+        Item result[] = new Item[position];
+        int j = 0;
+        for (int i = 0; i < position; i++) {
+            if (items[i].getName().equals(name)) {
+                result[i] = items[i];
             }
+            j++;
         }
-        return result;
+        return Arrays.copyOf(result, j);
 
     }
-
-
 
 
     public Item findById(String id) {
