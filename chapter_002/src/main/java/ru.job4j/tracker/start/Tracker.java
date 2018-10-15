@@ -97,9 +97,8 @@ public class Tracker {
         int j = 0;
         for (int i = 0; i < position; i++) {
             if (items[i].getName().equals(name)) {
-                result[i] = items[i];
+                result[j++] = items[i];
             }
-            j++;
         }
         return Arrays.copyOf(result, j);
 
