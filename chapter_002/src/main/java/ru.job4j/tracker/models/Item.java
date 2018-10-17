@@ -34,8 +34,7 @@ public class Item {
     /**
      * Конструктор дефолтный.
      */
-    public Item(){
-
+    public Item() {
     }
 
     /**
@@ -70,17 +69,17 @@ public class Item {
     /**
      * Возвращает id.
      */
-    public String getId(){
+    public String getId() {
         return this.id;
     }
 
     /**
      * Устанавливает id.
      */
-    public void setId(String id){
+    public void setId(String id) {
         this.id = id;
     }
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 }

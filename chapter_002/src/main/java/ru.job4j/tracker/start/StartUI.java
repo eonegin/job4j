@@ -1,9 +1,6 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.start;
 
 import ru.job4j.tracker.models.Item;
-import ru.job4j.tracker.start.ConsoleInput;
-import ru.job4j.tracker.start.Input;
-import ru.job4j.tracker.start.Tracker;
 
 import java.util.Arrays;
 
@@ -109,11 +106,11 @@ public class StartUI {
         String itemId = this.input.ask("Введите id заявки :");
         String newName = this.input.ask("Введите новое имя заявки :");
         boolean result = tracker.replace(itemId, tracker.findById(itemId));
-        if (result == true) {
+        if (result) {
             System.out.println("Имя заявки с Id: " + itemId + " заменено на: " + newName);
+        } else {
+            System.out.println("Редактирование не удалось");
         }
-
-
     }
 
     private void deleteItem() {
@@ -121,7 +118,7 @@ public class StartUI {
         System.lineSeparator();
         String itemId = this.input.ask("Введите id заявки :");
         boolean result = tracker.delete(itemId);
-        if (result == true) {
+        if (result) {
             System.out.println("Заявка с id = " + itemId + " удалена");
         } else {
             System.out.println("Заявка с id = " + itemId + "не удалена");
@@ -146,7 +143,7 @@ public class StartUI {
     private void findItemByName() {
         System.out.println("------------ Поиск заявки по имени --------------");
         String name = this.input.ask("Введите имя заявки: ");
-        Item item[] = this.tracker.findByName(name);
+        Item[] item = this.tracker.findByName(name);
         for (Item i : item) {
             if (i.getName().equals(name)) {
                 System.out.println("Id: " + i.getId());
