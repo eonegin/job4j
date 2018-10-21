@@ -35,7 +35,7 @@ public class StartUI {
      * @param input   ввод данных.
      * @param tracker хранилище заявок.
      */
-    public StartUI(ConsoleInput input, Tracker tracker) {
+    public StartUI(Input input, Tracker tracker) {
         this.input = input;
         this.tracker = tracker;
     }
@@ -79,6 +79,7 @@ public class StartUI {
                 this.findItemByName();
             } else if (EXIT.equals(answer)) {
                 exit = true;
+
             }
 
         }
@@ -88,8 +89,8 @@ public class StartUI {
         System.out.println("------------ Добавление новой заявки --------------");
         String name = this.input.ask("Введите имя заявки :");
         String desc = this.input.ask("Введите описание заявки :");
-        String create = this.input.ask("Введите время создания заявки :");
-        Item item = new Item(name, desc, 13414);
+        long create = Long.parseLong(this.input.ask("Введите время создания заявки :"));
+        Item item = new Item(name, desc, create);
         this.tracker.add(item);
         System.out.println("------------ Новая заявка с Id : " + item.getId() + " " + "-----------");
         System.lineSeparator();
@@ -105,9 +106,13 @@ public class StartUI {
         System.out.println("------------ Редактирование заявки --------------");
         String itemId = this.input.ask("Введите id заявки :");
         String newName = this.input.ask("Введите новое имя заявки :");
+        String newDesc = this.input.ask("Введите новое описание заявки :");
+        long newCreate = Long.parseLong(this.input.ask("Введите новое время создания заявки :"));
         boolean result = tracker.replace(itemId, tracker.findById(itemId));
         if (result) {
             System.out.println("Имя заявки с Id: " + itemId + " заменено на: " + newName);
+            System.out.println("Описание заявки с Id: " + itemId + " заменено на: " + newDesc);
+            System.out.println("Время создания заявки с Id: " + itemId + " заменено на: " + newCreate);
         } else {
             System.out.println("Редактирование не удалось");
         }
