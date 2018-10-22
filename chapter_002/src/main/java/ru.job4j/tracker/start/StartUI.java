@@ -42,15 +42,10 @@ public class StartUI {
 
     public void showMenu() {
         System.out.println("0. Создание новой заявки");
-        System.lineSeparator();
         System.out.println("1. Показать все заявки");
-        System.lineSeparator();
         System.out.println("2. Редактировать заявку");
-        System.lineSeparator();
         System.out.println("3. Удалить заявку");
-        System.lineSeparator();
         System.out.println("4. Найти заявку по Id");
-        System.lineSeparator();
         System.out.println("5. Найти заявку по name");
         System.lineSeparator();
         System.out.println("6. Выход");
@@ -108,7 +103,8 @@ public class StartUI {
         String newName = this.input.ask("Введите новое имя заявки :");
         String newDesc = this.input.ask("Введите новое описание заявки :");
         long newCreate = Long.parseLong(this.input.ask("Введите новое время создания заявки :"));
-        boolean result = tracker.replace(itemId, tracker.findById(itemId));
+        Item item = new Item(newName, newDesc, newCreate);
+        boolean result = tracker.replace(itemId, item);
         if (result) {
             System.out.println("Имя заявки с Id: " + itemId + " заменено на: " + newName);
             System.out.println("Описание заявки с Id: " + itemId + " заменено на: " + newDesc);
