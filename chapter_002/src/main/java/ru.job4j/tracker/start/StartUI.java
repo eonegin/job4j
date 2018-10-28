@@ -47,7 +47,6 @@ public class StartUI {
         System.out.println("3. Удалить заявку");
         System.out.println("4. Найти заявку по Id");
         System.out.println("5. Найти заявку по name");
-        System.lineSeparator();
         System.out.println("6. Выход");
     }
 
@@ -94,7 +93,9 @@ public class StartUI {
     private void showAllItem() {
         System.out.println("------------ Просмотр всех заявок --------------");
         Item[] result = tracker.findAll();
-        System.out.println(Arrays.toString(result));
+        for (int i = 0; i < result.length; i++) {
+            System.out.println("Имя: " + result[i].getName() + " " + "Описание: " + result[i].getDescription() + " " + "Время создания: " + result[i].getCreate());
+        }
     }
 
     private void editItem() {

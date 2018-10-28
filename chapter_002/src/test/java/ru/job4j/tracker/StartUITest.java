@@ -1,11 +1,21 @@
 package ru.job4j.tracker;
 
+import org.hamcrest.core.Is;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import ru.job4j.tracker.models.Item;
-import ru.job4j.tracker.start.*;
+import ru.job4j.tracker.start.Input;
+import ru.job4j.tracker.start.StartUI;
+import ru.job4j.tracker.start.StubInput;
+import ru.job4j.tracker.start.Tracker;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+
 /**
  * StartUITest.
  * Тестирует действия пользователя.
@@ -16,6 +26,32 @@ import static org.junit.Assert.assertThat;
  */
 
 public class StartUITest {
+    String sepor = System.lineSeparator();
+
+    private String toString(StringBuilder info) {
+        String menu = String.format("0. Создание новой заявки%s1. Показать все заявки%s2. Редактировать заявку%s3. Удалить заявку%s4. Найти заявку по Id%s5. Найти заявку по name%s6. Выход%s",
+                sepor, sepor, sepor, sepor, sepor, sepor, sepor, sepor, sepor);
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder.append(menu)
+                .append(info)
+                .append(menu).toString();
+    }
+
+    private final PrintStream stdout = System.out;
+    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+
+    @Before
+    public void loadOutput() {
+        System.out.println("execute before method");
+        System.setOut(new PrintStream(this.out));
+    }
+
+    @After
+    public void backOutput() {
+        System.setOut(this.stdout);
+        System.out.println("execute after method");
+    }
 
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
@@ -26,19 +62,33 @@ public class StartUITest {
     }
 
     @Test
-    public void whenUpdateThenTrackerHasUpdatedValue() {
-        // создаём Tracker
+    public void whenUserSearchAllItems() {
         Tracker tracker = new Tracker();
-        //Напрямую добавляем заявку
-        Item item = tracker.add(new Item("test name", "desc", 12));
-        //создаём StubInput с последовательностью действий(производим замену заявки)
-        Input input = new StubInput(new String[]{"2", item.getId(), "replace", "replace", "12345", "6"});
-        // создаём StartUI и вызываем метод init()
+        Item item = tracker.add(new Item("1", "1", 1));
+        Item item2 = tracker.add(new Item("2", "2", 2));
+        Item item3 = tracker.add(new Item("3", "3", 3));
+        Input input = new StubInput(new String[]{"1", "6"});
         new StartUI(input, tracker).init();
-        // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+        assertThat(new String(out.toByteArray()),
+                is(
+                        new StringBuilder()
+                                .append("Имя: 1 Описание: 1 Время создания: 1" + "\n")
+                                .append("Имя: 2 Описание: 2 Время создания: 2" + "\n")
+                                .append("Имя: 3 Описание: 3 Время создания: 3" + "\n")
+                                .append(sepor)
+                                .toString()));
+    }
+
+    @Test
+    public void whenUpdateThenTrackerHasUpdatedValue() {
+        Tracker tracker = new Tracker();
+        Item item = tracker.add(new Item("test name", "desc", 12));
+        Input input = new StubInput(new String[]{"2", item.getId(), "replace", "replace", "12345", "6"});
+        new StartUI(input, tracker).init();
         assertThat(tracker.findById(item.getId()).getName(), is("replace"));
         assertThat(tracker.findById(item.getId()).getName(), is("replace"));
     }
+
     @Test
     public void whenUserDeleteItemThenTracker() {
         Tracker tracker = new Tracker();     // создаём Tracker
@@ -50,4 +100,39 @@ public class StartUITest {
         assertThat(tracker.findAll()[1].getName(), is("third"));
         assertThat(tracker.findAll().length, is(2));
     }
-}
+
+    @Test
+    public void whenUserSearchItemById() {
+        Tracker tracker = new Tracker();
+        Item item = tracker.add(new Item("1", "1", 1));
+        Item item2 = tracker.add(new Item("2", "2", 2));
+        Item item3 = tracker.add(new Item("3", "3", 3));
+        Input input = new StubInput(new String[]{"4", item.getId(), "6"});
+        StringBuilder result = new StringBuilder();
+        result.append(String.format("------------ Поиск заявки по Id --------------" + sepor))
+                .append(String.format("Имя: 1" + sepor))
+                .append(String.format("Описание: 1" + sepor))
+                .append(String.format("Время создания: 1" + sepor))
+                .toString();
+        new StartUI(input, tracker).init();
+        assertThat(new String(this.out.toByteArray()), Is.is(this.toString(result)));
+    }
+    @Test
+    public void whenUserSearchItemByName() {
+        Tracker tracker = new Tracker();
+        Item item = tracker.add(new Item("1", "1", 1));
+        Item item2 = tracker.add(new Item("2", "2", 2));
+        Item item3 = tracker.add(new Item("3", "3", 3));
+        Input input = new StubInput(new String[]{"5", item.getName(), "6"});
+        StringBuilder result = new StringBuilder();
+        result.append(String.format("------------ Поиск заявки по имени --------------" + sepor))
+                .append(String.format("Id: " + item.getId()) + sepor)
+                .append(String.format("Описание: 1" + sepor))
+                .append(String.format("Время создания: 1" + sepor))
+                .toString();
+        new StartUI(input, tracker).init();
+        assertThat(new String(this.out.toByteArray()), Is.is(this.toString(result)));
+    }
+    }
+
+
