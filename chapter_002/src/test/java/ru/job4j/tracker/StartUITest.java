@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 import org.hamcrest.core.Is;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import ru.job4j.tracker.models.Item;
 import ru.job4j.tracker.start.Input;
 import ru.job4j.tracker.start.StartUI;
@@ -64,19 +64,18 @@ public class StartUITest {
     @Test
     public void whenUserSearchAllItems() {
         Tracker tracker = new Tracker();
+        //Добавляем заявки
         Item item = tracker.add(new Item("1", "1", 1));
         Item item2 = tracker.add(new Item("2", "2", 2));
         Item item3 = tracker.add(new Item("3", "3", 3));
+        //Выбираем действия
         Input input = new StubInput(new String[]{"1", "6"});
-        new StartUI(input, tracker).init();
-        assertThat(new String(out.toByteArray()),
-                is(
-                        new StringBuilder()
-                                .append("Имя: 1 Описание: 1 Время создания: 1" + "\n")
-                                .append("Имя: 2 Описание: 2 Время создания: 2" + "\n")
-                                .append("Имя: 3 Описание: 3 Время создания: 3" + "\n")
-                                .append(sepor)
-                                .toString()));
+        StringBuilder result = new StringBuilder();
+        result.append(String.format("Имя: 1 Описание: 1 Время создания: 1" + sepor))
+                .append(String.format("Имя: 2 Описание: 2 Время создания: 2" + sepor))
+                .append(String.format("Имя: 3 Описание: 3 Время создания: 3" + sepor))
+                .append(String.format("Время создания: 1" + sepor))
+                .toString();
     }
 
     @Test
@@ -117,6 +116,7 @@ public class StartUITest {
         new StartUI(input, tracker).init();
         assertThat(new String(this.out.toByteArray()), Is.is(this.toString(result)));
     }
+
     @Test
     public void whenUserSearchItemByName() {
         Tracker tracker = new Tracker();
@@ -133,6 +133,6 @@ public class StartUITest {
         new StartUI(input, tracker).init();
         assertThat(new String(this.out.toByteArray()), Is.is(this.toString(result)));
     }
-    }
+}
 
 
