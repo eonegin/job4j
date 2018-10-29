@@ -71,11 +71,14 @@ public class StartUITest {
         //Выбираем действия
         Input input = new StubInput(new String[]{"1", "6"});
         StringBuilder result = new StringBuilder();
-        result.append(String.format("Имя: 1 Описание: 1 Время создания: 1" + sepor))
+        result.append(String.format("------------ Просмотр всех заявок --------------" + sepor))
+                .append(String.format("Имя: 1 Описание: 1 Время создания: 1" + sepor))
                 .append(String.format("Имя: 2 Описание: 2 Время создания: 2" + sepor))
                 .append(String.format("Имя: 3 Описание: 3 Время создания: 3" + sepor))
-                .append(String.format("Время создания: 1" + sepor))
                 .toString();
+        new StartUI(input, tracker).init();
+        assertThat(new String(this.out.toByteArray()), Is.is(this.toString(result)));
+
     }
 
     @Test
