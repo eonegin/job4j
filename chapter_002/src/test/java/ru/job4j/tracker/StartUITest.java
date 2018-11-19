@@ -72,13 +72,12 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"1", "6"});
         StringBuilder result = new StringBuilder();
         result.append(String.format("------------ Просмотр всех заявок --------------" + sepor))
-                .append(String.format("Имя: 1 Описание: 1 Время создания: 1" + sepor))
-                .append(String.format("Имя: 2 Описание: 2 Время создания: 2" + sepor))
-                .append(String.format("Имя: 3 Описание: 3 Время создания: 3" + sepor))
+                .append(String.format("Id: %s Имя: %s Описание: %s Время создания: %s" + sepor, item.getId(), item.getName(), item.getDescription(), item.getCreate()))
+                .append(String.format("Id: %s Имя: %s Описание: %s Время создания: %s" + sepor, item2.getId(), item2.getName(), item2.getDescription(), item2.getCreate()))
+                .append(String.format("Id: %s Имя: %s Описание: %s Время создания: %s" + sepor, item3.getId(), item3.getName(), item3.getDescription(), item3.getCreate()))
                 .toString();
         new StartUI(input, tracker).init();
         assertThat(new String(this.out.toByteArray()), Is.is(this.toString(result)));
-
     }
 
     @Test

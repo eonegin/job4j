@@ -21,17 +21,17 @@ public class Item {
     /**
      * Содержит имя сущности
      */
-    public String name;
+    private String name;
 
     /**
      * Содержит описание сущности
      */
-    public String description;
+    private String description;
 
     /**
      * Содержит время создания сущности
      */
-    public long create;
+    private long create;
 
     /**
      * Конструктор дефолтный.
@@ -86,5 +86,8 @@ public class Item {
     }
     public void setDescription(String description) {
         this.description = description;
+    }
+    public void setCreate(long create) {
+        this.create = create;
     }
 }
