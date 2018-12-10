@@ -1,9 +1,6 @@
 package ru.job4j.tracker.start;
 
-import ru.job4j.tracker.models.Item;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class StartUI {
@@ -32,6 +29,7 @@ public class StartUI {
         this.input = input;
         this.tracker = tracker;
     }
+
     /**
      * Основой цикл программы.
      */
@@ -41,10 +39,10 @@ public class StartUI {
         menu.fillActions();
         for (int i = 0; i < menu.getActionsLentgh(); i++) {
             range.add(i);
-        do {
-            menu.show();
-            menu.select(input.ask("Select: "));
-        } while (!"y".equals(this.input.ask("Exit?(y): ")));
+            do {
+                menu.show();
+                menu.select(input.ask("Select: "));
+            } while (!"y" .equals(this.input.ask("Exit?(y): ")));
         }
     }
 }

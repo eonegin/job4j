@@ -1,7 +1,7 @@
 package ru.job4j.tracker.start;
 
 
-import ru.job4j.tracker.models.*;
+import ru.job4j.tracker.models.Item;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -64,8 +64,8 @@ public class Tracker {
                 break;
             }
         }
-            return result;
-        }
+        return result;
+    }
 
 
     /**

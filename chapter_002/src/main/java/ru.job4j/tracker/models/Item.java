@@ -1,7 +1,5 @@
 package ru.job4j.tracker.models;
 
-import java.util.Date;
-
 /**
  * ArrayChar.
  * Обертка над строкой.
@@ -54,6 +52,7 @@ public class Item {
     public String getName() {
         return this.name;
     }
+
     /**
      * Возвращает описание.
      */
@@ -81,12 +80,15 @@ public class Item {
     public void setId(String id) {
         this.id = id;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
+
     public void setCreate(long create) {
         this.create = create;
     }
