@@ -4,4 +4,5 @@ import java.util.List;
 
 public interface Input {
     public String ask(String question);
+    int ask(String question, int[] range);
 }

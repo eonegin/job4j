@@ -31,8 +31,8 @@ public class MenuTracker {
     }
 
 
-    public void select(String key) {
-        this.actions.get(parseInt(key)).execute(this.input, this.tracker);
+    public void select(int key) {
+        this.actions.get(parseInt(String.valueOf(key))).execute(this.input, this.tracker);
     }
 
 

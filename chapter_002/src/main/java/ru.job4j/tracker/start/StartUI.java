@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StartUI {
-
+    private int[] ranges = new int[]{0, 1, 2, 3, 4, 5};
     private String desc;
 
     public static void main(String[] args) {
-        new StartUI(new ConsoleInput(), new Tracker()).init();
+        new StartUI(new ValidateInput(), new Tracker()).init();
     }
 
 
@@ -41,8 +41,8 @@ public class StartUI {
             range.add(i);
             do {
                 menu.show();
-                menu.select(input.ask("Select: "));
-            } while (!"y" .equals(this.input.ask("Exit?(y): ")));
+                menu.select(input.ask("Select: ", ranges));
+            } while (!"y".equals(this.input.ask("Exit?(y): ")));
         }
     }
 }
