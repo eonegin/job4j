@@ -35,9 +35,14 @@ public class StubInput implements Input {
         return this.value[this.position++];
     }
 
-    @Override
-    public int ask(String question, int[] range) {
-        //throw new UnsupportedOperationException("Unsupported operation");
-        return -1;
+    //@Override
+    public int ask(String question, int[] range){
+        if(value.length > 6) {
+            throw new UnsupportedOperationException("Введите один из предложенных пунктов меню");
+        }
+        return 3;
     }
 }
+
+
+

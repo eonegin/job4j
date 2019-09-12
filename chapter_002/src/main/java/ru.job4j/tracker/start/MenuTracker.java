@@ -9,6 +9,7 @@ import static java.lang.Integer.parseInt;
 
 
 public class MenuTracker {
+    //
     private Input input;
     private Tracker tracker;
     private List<UserAction> actions = new ArrayList<>();
@@ -32,7 +33,7 @@ public class MenuTracker {
 
 
     public void select(int key) {
-        this.actions.get(parseInt(String.valueOf(key))).execute(this.input, this.tracker);
+        this.actions.get((key)).execute(this.input, this.tracker);
     }
 
 

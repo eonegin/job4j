@@ -22,7 +22,7 @@ public class ConsoleInput implements Input {
             }
         }
         if (exist) {
-            return key;
+            return (key);
         } else {
             throw new MenuOutException("Выберите существующий пункт меню");
         }
