@@ -27,6 +27,7 @@ public class MenuTracker {
         this.actions.add(new MenuTracker.DeleteItem());
         this.actions.add(new findItemById());
         this.actions.add(new findItemByName());
+        this.actions.add(new exitProgram());
 
 
     }
@@ -73,7 +74,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return String.format("%s. %s", this.key(), "Add new item");
+            return String.format("%s. %s", this.key(), "Создание новой заявки");
         }
     }
 
@@ -95,7 +96,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return String.format("%s. %s", this.key(), "Show all items");
+            return String.format("%s. %s", this.key(), "Показать все заявки");
         }
     }
 
@@ -128,7 +129,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return String.format("%s. %s", this.key(), "Edit item");
+            return String.format("%s. %s", this.key(), "Редактировать заявку");
         }
 
     }
@@ -157,7 +158,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return String.format("%s. %s", this.key(), "Delete item");
+            return String.format("%s. %s", this.key(), "Удалить заявку");
         }
     }
 
@@ -184,7 +185,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return String.format("%s. %s", this.key(), "Find item by id");
+            return String.format("%s. %s", this.key(), "Найти заявку по Id");
         }
     }
 
@@ -212,7 +213,25 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return String.format("%s. %s", this.key(), "Find item by name");
+            return String.format("%s. %s", this.key(), "Найти заявку по name");
+        }
+    }
+
+    //Выход из программы
+    private class exitProgram implements UserAction {
+        @Override
+        public int key() {
+            return 6;
+        }
+
+        @Override
+        public void execute(Input input, Tracker tracker) {
+            System.exit(0);
+        }
+
+        @Override
+        public String info() {
+            return String.format("%s. %s", this.key(), "Выход");
         }
     }
 

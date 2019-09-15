@@ -36,7 +36,7 @@ public class StartUI {
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
         List<Integer> range = new ArrayList<>();
-        int[] ranges = new int[]{0, 1, 2, 3, 4, 5};
+        int[] ranges = new int[]{0, 1, 2, 3, 4, 5, 6};
         menu.fillActions();
 
 
@@ -50,7 +50,7 @@ public class StartUI {
         do {
             menu.show();
             menu.select(input.ask("select:", ranges));
-        } while (!"y".equals(this.input.ask("Exit?(y): ")));
+        } while (!"y".equals(this.input.ask("Exit?(y/n): ")));
     }
 }
 

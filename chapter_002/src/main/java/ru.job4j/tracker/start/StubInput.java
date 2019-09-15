@@ -37,10 +37,20 @@ public class StubInput implements Input {
 
     //@Override
     public int ask(String question, int[] range){
-        if(value.length > 6) {
-            throw new UnsupportedOperationException("Введите один из предложенных пунктов меню");
+        int key = Integer.valueOf(this.ask(question));
+        boolean exist = false;
+        for (int value : range) {
+            if (value == key) {
+                exist = true;
+                break;
+            }
         }
-        return 3;
+        if(exist) {
+            return (key);
+        }
+        else{
+        throw new UnsupportedOperationException("Введите один из предложенных пунктов меню");
+        }
     }
 }
 
