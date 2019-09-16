@@ -66,15 +66,15 @@ public class StartUITest {
         Item item2 = tracker.add(new Item("2", "2", 2));
         Item item3 = tracker.add(new Item("3", "3", 3));
         //Выбираем действия
-        Input input = new StubInput(new String[]{"1", "n"});
+        Input input = new StubInput(new String[]{"1", "y"});
         StringBuilder result = new StringBuilder();
         result.append(String.format("------------ Просмотр всех заявок --------------" + sepor))
                 .append(String.format("Id: %s Имя: %s Описание: %s Время создания: %s" + sepor, item.getId(), item.getName(), item.getDescription(), item.getCreate()))
                 .append(String.format("Id: %s Имя: %s Описание: %s Время создания: %s" + sepor, item2.getId(), item2.getName(), item2.getDescription(), item2.getCreate()))
                 .append(String.format("Id: %s Имя: %s Описание: %s Время создания: %s" + sepor, item3.getId(), item3.getName(), item3.getDescription(), item3.getCreate()))
                 .toString();
-        //new StartUI(input, tracker).init();
-        //assertThat(new String(this.out.toByteArray()), Is.is(this.toString(result)));
+        new StartUI(input, tracker).init();
+        assertThat(new String(this.out.toByteArray()), Is.is(this.toString(result)));
     }
 
     @Test
@@ -112,8 +112,8 @@ public class StartUITest {
                 .append(String.format("Описание: 1" + sepor))
                 .append(String.format("Время создания: 1" + sepor))
                 .toString();
-        //new StartUI(input, tracker).init();
-        //assertThat(new String(this.out.toByteArray()), Is.is(this.toString(result)));
+        new StartUI(input, tracker).init();
+        assertThat(new String(this.out.toByteArray()), Is.is(this.toString(result)));
     }
 
     @Test
@@ -129,8 +129,8 @@ public class StartUITest {
                 .append(String.format("Описание: 1" + sepor))
                 .append(String.format("Время создания: 1" + sepor))
                 .toString();
-        //new StartUI(input, tracker).init();
-        //assertThat(new String(this.out.toByteArray()), Is.is(this.toString(result)));
+        new StartUI(input, tracker).init();
+        assertThat(new String(this.out.toByteArray()), Is.is(this.toString(result)));
     }
 }
 

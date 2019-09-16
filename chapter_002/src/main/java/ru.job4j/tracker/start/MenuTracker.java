@@ -90,8 +90,9 @@ public class MenuTracker {
             System.out.println("------------ Просмотр всех заявок --------------");
             Item[] result = tracker.findAll();
             for (int i = 0; i < result.length; i++) {
-                String.format("Имя: " + result[i].getName() + " " + "Описание: " + result[i].getDescription() + " " + "Время создания: " + result[i].getCreate());
+                System.out.println(String.format("Id: " + result[i].getId() + "Имя: " + result[i].getName() + " " + "Описание: " + result[i].getDescription() + " " + "Время создания: " + result[i].getCreate()));
             }
+
         }
 
         @Override
