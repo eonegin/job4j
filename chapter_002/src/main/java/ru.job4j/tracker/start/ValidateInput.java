@@ -1,33 +1,35 @@
 package ru.job4j.tracker.start;
 
-public class ValidateInput extends ConsoleInput {
-    public ValidateInput(String[] strings) {
-        super();
-    }
+public class ValidateInput implements Input {
 
-    public ValidateInput() {
+    private final Input input;
 
+    public ValidateInput(final Input input) {
+        this.input = input;
     }
 
     @Override
+    public String ask(String question) {
+        return this.input.ask(question);
+    }
+
     public int ask(String question, int[] range) {
         boolean invalid = true;
         int value = -1;
-
         do {
             try {
-                value = super.ask(question, range);
+                value = this.input.ask(question, range);
                 invalid = false;
             } catch (NumberFormatException nfe) {
                 System.out.println("1Введите корректные данные");
             } catch (MenuOutException moe) {
                 System.out.println("2Введите один из предложенных пунктов меню");
-            }catch (UnsupportedOperationException uoe){
+            } catch (UnsupportedOperationException uoe) {
                 System.out.println("3Введите один из предложенных пунктов меню");
             }
-    } while(invalid);
+        } while (invalid);
         return value;
-}
+    }
 
 
 }
