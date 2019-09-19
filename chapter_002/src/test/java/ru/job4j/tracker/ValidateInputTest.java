@@ -13,7 +13,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 /**
- *
  * @author Evgeniy Onegin (3he@mail.ru)
  * @version $Id$
  * @since 0.1
@@ -34,15 +33,15 @@ public class ValidateInputTest {
 
     @Test
     public void whenInvalidInput() {
-        ValidateInput input = new ValidateInput(
-                new StubInput(new String[] {"invalid", "1"})
-        );
-        input.ask("Enter", new int[] {1});
-        assertThat(
-                this.mem.toString(),
-                is(
-                        String.format("1Введите корректные данные%n")
-                )
-        );
+        ValidateInput input = new ValidateInput(new StubInput(new String[]{"invalid", "1"}));
+        input.ask("Enter", new int[]{1});
+        assertThat(this.mem.toString(), is(String.format("1Введите корректные данные%n")));
+    }
+
+    @Test
+    public void whenOutOfBorderInput() {
+        ValidateInput input = new ValidateInput(new StubInput(new String[]{"8", "1"}));
+        input.ask("select:", new int[]{1});
+        assertThat(this.mem.toString(), is(String.format("3Введите один из предложенных пунктов меню%n")));
     }
 }
