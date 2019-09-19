@@ -30,8 +30,7 @@ public class StartUITest {
                 sepor, sepor, sepor, sepor, sepor, sepor, sepor, sepor, sepor);
         StringBuilder stringBuilder = new StringBuilder();
         return stringBuilder.append(menu)
-                .append(info)
-                .append(menu).toString();
+                .append(info).toString();
     }
 
     private final PrintStream stdout = System.out;
@@ -66,7 +65,7 @@ public class StartUITest {
         Item item2 = tracker.add(new Item("2", "2", 2));
         Item item3 = tracker.add(new Item("3", "3", 3));
         //Выбираем действия
-        Input input = new StubInput(new String[]{"1", "y"});
+        Input input = new StubInput(new String[]{"1", "y", "y"});
         StringBuilder result = new StringBuilder();
         result.append(String.format("------------ Просмотр всех заявок --------------" + sepor))
                 .append(String.format("Id: %s Имя: %s Описание: %s Время создания: %s" + sepor, item.getId(), item.getName(), item.getDescription(), item.getCreate()))
@@ -131,6 +130,7 @@ public class StartUITest {
                 .toString();
         new StartUI(input, tracker).init();
         assertThat(new String(this.out.toByteArray()), Is.is(this.toString(result)));
+
     }
 }
 
